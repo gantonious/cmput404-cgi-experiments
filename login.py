@@ -2,8 +2,17 @@
 
 import os
 import json
+import cgi 
 
-print("Content-Type: application/json\r")
+print("Content-Type: text/html\r")
 print("\r")
 
-print(json.dumps(dict(os.environ)))
+form = cgi.FieldStorage() 
+
+username = form.getvalue('username')
+password  = form.getvalue('password')
+
+print("<center>")
+print("<b>Username:</b> {}<br>".format(username))
+print("<b>password:</b> {}<br>".format(password))
+print("</center>")
